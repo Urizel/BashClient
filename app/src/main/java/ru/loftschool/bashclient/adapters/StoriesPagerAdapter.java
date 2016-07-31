@@ -15,6 +15,7 @@ public class StoriesPagerAdapter extends FragmentStatePagerAdapter {
 
     public StoriesPagerAdapter(FragmentManager fm, boolean allStories) {
         super(fm);
+        // XXX Data query on UI thread (other similar queries used Loaders)
         if (allStories) {
             items = Story.selectAll();
         } else {
@@ -22,6 +23,8 @@ public class StoriesPagerAdapter extends FragmentStatePagerAdapter {
         }
     }
 
+    // XXX Fragment overhead
+    // XXX No view reuse
     @Override
     public Fragment getItem(int position) {
         return FullStoryFragment.newInstance(items.get(position).getId());

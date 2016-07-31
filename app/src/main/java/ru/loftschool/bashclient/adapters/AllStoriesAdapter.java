@@ -37,6 +37,7 @@ public class AllStoriesAdapter extends SelectableAdapter<AllStoriesAdapter.AllSt
     private boolean multipleRemove = false;
     private Timer undoRemoveTimer;
     private int lastPosition = -1;
+    // XXX Context leak
     private Context context;
 
     public AllStoriesAdapter() {

@@ -49,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
     public static final String SWIPE_START_ACTION = "start_swipe_refresh";
     public static final String SWIPE_STOP_ACTION = "stop_swipe_refresh";
 
+    // XXX Context leak
     public static ActionMode actionMode;
     private SparseBooleanArray currentSelectedItems;
     private ActionBarDrawerToggle mDrawerToggle;
@@ -152,6 +153,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initStories() {
+        // XXX Abstraction leak
         if (Story.selectAll().isEmpty()) {
             RefreshDataService_.intent(getApplication()).start();
         }
@@ -212,6 +214,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     // starting Action Mode and restoring selected items
+    // XXX why not fragment?
     private void startActionMode() {
         Fragment currentFragment = getSupportFragmentManager().findFragmentById(R.id.fragment_container);
         if (currentFragment instanceof AllStoriesFragment) {
@@ -267,6 +270,7 @@ public class MainActivity extends AppCompatActivity {
         } else if (this.getSupportFragmentManager().findFragmentById(R.id.fragment_container) instanceof AllStoriesFragment) {
             Toast toast = Toast.makeText(getBaseContext(), exitToastText, Toast.LENGTH_SHORT);
 
+            // XXX Double back confirmation
             if (mBackPressed + TIME_INTERVAL > System.currentTimeMillis()) {
                 toast.cancel();
                 finish();

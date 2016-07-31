@@ -65,6 +65,7 @@ public class RefreshDataService extends IntentService {
 
     @UiThread
     void retrofitErrorMessageShow(RetrofitError.Kind kind, RetrofitError error) {
+        // XXX Abstraction leak
         if (kind.equals(RetrofitError.Kind.NETWORK)) {
             Toast.makeText(this, errorTroubleConnect, Toast.LENGTH_SHORT).show();
         } else if (kind.equals(RetrofitError.Kind.CONVERSION) || kind.equals(RetrofitError.Kind.HTTP)) {

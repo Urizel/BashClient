@@ -42,6 +42,7 @@ import ru.loftschool.bashclient.ui.listeners.ClickListener;
 public class AllStoriesFragment extends Fragment{
 
     private static final String SAVED_LAYOUT_MANAGER = "save_layout_state";
+    // XXX Context leak
     private static AllStoriesAdapter adapter;
     private ActionModeCallback actionModeCallback = new ActionModeCallback();
     private Bundle savedSelectedItems;
@@ -64,6 +65,7 @@ public class AllStoriesFragment extends Fragment{
     @StringRes(R.string.undo_snackbar_cancel)
     String cancelTxt;
 
+    // XXX Redundant field - can be passed as parameter
     Parcelable layoutManagerSavedState;
 
     public SwipeRefreshLayout getSwipeRefreshLayout() {
@@ -85,11 +87,14 @@ public class AllStoriesFragment extends Fragment{
 
         initRecycleView();
         loadData();
+        // XXX can be in onViewStateRestored
         restoreLayoutManagerPosition();
+
         initSwipeToDismiss();
         initSwipeRefresh();
     }
 
+    // XXX can be replaced by onViewStateRestored
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -125,6 +130,7 @@ public class AllStoriesFragment extends Fragment{
                 adapter = new AllStoriesAdapter(data, new ClickListener() {
                     @Override
                     public void onItemClicked(View view, int position) {
+                        // XXX Abstraction leak
                         if (MainActivity.getActionMode() != null) {
                             toggleSelection(position);
                         } else {

@@ -64,6 +64,7 @@ public class FullStoriesTabsFragment extends Fragment implements ViewPager.OnPag
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        // XXX non-parent inflation
         View view = inflater.inflate(R.layout.pager, null);
         viewPager = (ViewPager) view.findViewById(R.id.stories_pager);
 
@@ -77,6 +78,7 @@ public class FullStoriesTabsFragment extends Fragment implements ViewPager.OnPag
 
         setCurrentStory(currentPosition);
 
+        // XXX Comment lang
         //Инициализируем адаптер
         adapter = new StoriesPagerAdapter(getChildFragmentManager(), allStoriesList);
         viewPager.setAdapter(adapter);

@@ -39,6 +39,7 @@ public class Story extends Model {
     public Story(String text, String shortText, Integer storyNum) {
         super();
         this.text = text;
+        // XXX View limitation in model
         this.shortText = shortText;
         this.storyNum = storyNum;
         this.favorite = false;

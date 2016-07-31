@@ -4,6 +4,7 @@ import com.google.gson.annotations.Expose;
 
 public class StoryModel {
 
+    // XXX Non-final
     @Expose
     private String site;
     @Expose
@@ -15,6 +16,7 @@ public class StoryModel {
     @Expose
     private String elementPureHtml;
 
+    // XXX Useless javadoc
     /**
      *
      * @return

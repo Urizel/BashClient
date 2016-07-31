@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".MainActivity">
 
+    <!--XXX hardcoded text-->
     <item android:id="@+id/menu_story_unread"
         android:icon="@drawable/eye"
         android:title="Не прочитано"
